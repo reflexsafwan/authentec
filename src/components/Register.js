@@ -1,6 +1,22 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+// import { getAuth } from "firebase/auth";
+// import app from '../firebase/firebase.config'
+
+
+// const auth = getAuth(app);
+
 
 const Register = () => {
+
+  const handleRegister = (event) => {
+    event.preventDefault()
+    const name = event.target.name.value;
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    console.log(name, email, password);
+
+  }
   return (
     <div className='flex justify-center items-center pt-8'>
       <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
@@ -9,6 +25,7 @@ const Register = () => {
           <p className='text-sm text-gray-400'>Create a new account</p>
         </div>
         <form
+          onSubmit={handleRegister}
           noValidate=''
           action=''
           className='space-y-12 ng-untouched ng-pristine ng-valid'
@@ -104,9 +121,9 @@ const Register = () => {
         </div>
         <p className='px-6 text-sm text-center text-gray-400'>
           Already have an account yet?{' '}
-          <a href='#' className='hover:underline text-gray-600'>
+          <Link to={'/login'} className='hover:underline text-gray-600'>
             Sign In
-          </a>
+          </Link>
           .
         </p>
       </div>
